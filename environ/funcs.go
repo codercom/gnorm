@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -63,6 +64,12 @@ var FuncMap = map[string]interface{}{
 	"trimRight":    strings.TrimRight,
 	"trimSpace":    strings.TrimSpace,
 	"trimSuffix":   strings.TrimSuffix,
+
+	"matchRegex": matchRegex,
+}
+
+func matchRegex(regex string, str string) bool {
+	return regexp.MustCompile(regex).MatchString(str)
 }
 
 // sliceString returns a slice of s from index start to end.
